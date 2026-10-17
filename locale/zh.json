@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "WorkBuddy 连接（新版）",
+    "description": "把已登录的 WorkBuddy 桌面 App 中的模型接入模型选择器，复用 App 自身的登录状态与积分。"
+  }
+}

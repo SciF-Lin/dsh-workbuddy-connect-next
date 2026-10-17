@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "WorkBuddy Connect (Next)",
+    "description": "Adds the models of the signed-in WorkBuddy desktop app to the model picker, reusing the app's own login and credits."
+  }
+}

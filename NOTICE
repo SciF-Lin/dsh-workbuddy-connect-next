@@ -1,0 +1,7 @@
+# The credential-protection and upstream request shapes are adapted from
+# dsh-workbuddy-connect (https://github.com/corrinehu/dsh-workbuddy-connect),
+# Copyright (c) corrinehu, released under the MIT License.
+#
+# This project is an independent reimplementation for DeepSeek Harness
+# 0.2.1-rc.2 and is not affiliated with, endorsed by, or supported by the
+# upstream author, Tencent, WorkBuddy, or DeepSeek.
