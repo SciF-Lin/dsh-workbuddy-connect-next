@@ -110,20 +110,19 @@ export function apply(ctx, config = {}) {
   timer.unref?.()
   ctx.effect(() => () => clearInterval(timer))
 
-  // Same-origin HTTP API for the browser half (status, balance, visibility, probe).
-  const webServer = ctx.get('webServer')
-  if (webServer !== undefined) {
-    ctx.effect(() => {
-      const disposers = api.register(webServer)
+  // Same-origin HTTP API for the browser half (status, balance, visibility,
+  // probe). The web server may be mounted after this plugin on a cold boot, so
+  // wait for the service instead of reading `ctx.get` once during apply.
+  ctx.inject(['webServer'], child => {
+    child.effect(() => {
+      const disposers = api.register(child.webServer)
       return () => {
         for (const dispose of disposers) {
           try { dispose() } catch { /* already disposed */ }
         }
       }
     })
-  } else {
-    logger?.warn?.('workbuddy-connect-next: web server unavailable; the plugin card and balance chip cannot load status')
-  }
+  })
 
   // A broken pi-ai-based predecessor may still own the plain route id; claim
   // it when free and fall back to a suffixed route instead of failing to mount.
